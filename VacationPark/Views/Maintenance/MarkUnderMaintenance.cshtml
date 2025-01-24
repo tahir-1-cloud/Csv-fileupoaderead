@@ -1,0 +1,41 @@
+﻿@model IEnumerable<VacationPark.Models.Reservation>
+
+@{
+    ViewBag.Title = "Mark House Under Maintenance";
+}
+
+<h2>Mark House Under Maintenance</h2>
+
+@if (ViewBag.AffectedReservations != null && ((IEnumerable<VacationPark.Models.Reservation>)ViewBag.AffectedReservations).Any())
+{
+    <h3>Affected Reservations:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Customer ID</th>
+                <th>House ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in ViewBag.AffectedReservations as IEnumerable<VacationPark.Models.Reservation>)
+            {
+                <tr>
+                    <td>@reservation.ReservationID</td>
+                    <td>@reservation.StartDate.ToShortDateString()</td>
+                    <td>@reservation.EndDate.ToShortDateString()</td>
+                    <td>@reservation.CustomerID</td>
+                    <td>@reservation.HouseID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No reservations are affected.</p>
+}
+
+<p>The house is now under maintenance.</p>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<VacationPark.Models.Reservation>
+
+@{
+    ViewBag.Title = "Search Reservations";
+}
+
+<h2>Search Reservations</h2>
+
+@{
+    ViewBag.Title = "Search Reservations";
+}
+
+<h2>Search Reservations</h2>
+
+<!-- Button to load the search form -->
+<button id="loadFormBtn" class="btn btn-primary">Start Search</button>
+
+<!-- Placeholder for the search form -->
+<div id="searchFormContainer" style="display: none; margin-top: 20px;">
+    <h3>Search Form</h3>
+
+    @using (Html.BeginForm("Search", "Reservations", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" name="customerName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="parkId">Select Park:</label>
+            <select id="parkId" name="parkId" class="form-control">
+                <option value="">-- Any Park --</option>
+                @foreach (var park in ViewBag.Parks as IEnumerable<VacationPark.Models.Park>)
+                {
+                    <option value="@park.ParkID">@park.Name (@park.Location)</option>
+                }
+            }
+        </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Search</button>
+    }
+</div>
+
+<!-- JavaScript to show the form when the button is clicked -->
+<script>
+    document.getElementById("loadFormBtn").addEventListener("click", function () {
+        document.getElementById("searchFormContainer").style.display = "block";
+        this.style.display = "none"; // Hide the button once the form is shown
+    });
+</script>

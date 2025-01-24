@@ -1,0 +1,114 @@
+﻿@model VacationPark.Models.UploadResultModel
+
+<h2>Uploaded Data</h2>
+
+<h3>Customers</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer.CustomerID</td>
+                <td>@customer.Name</td>
+                <td>@customer.Address</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Facilities</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Facility ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var facility in Model.Facilities)
+        {
+            <tr>
+                <td>@facility.FacilityID</td>
+                <td>@facility.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Houses</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>House ID</th>
+            <th>Street</th>
+            <th>Number</th>
+            <th>Is Active</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var house in Model.Houses)
+        {
+            <tr>
+                <td>@house.HouseID</td>
+                <td>@house.Street</td>
+                <td>@house.Number</td>
+                <td>@house.IsActive</td>
+                <td>@house.Capacity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Parks</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Park ID</th>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var park in Model.Parks)
+        {
+            <tr>
+                <td>@park.ParkID</td>
+                <td>@park.Name</td>
+                <td>@park.Location</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Reservations</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Customer ID</th>
+            <th>House ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model.Reservations)
+        {
+            <tr>
+                <td>@reservation.ReservationID</td>
+                <td>@reservation.StartDate.ToShortDateString()</td>
+                <td>@reservation.EndDate.ToShortDateString()</td>
+                <td>@reservation.CustomerID</td>
+                <td>@reservation.HouseID</td>
+            </tr>
+        }
+    </tbody>
+</table>
